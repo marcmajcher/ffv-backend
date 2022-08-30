@@ -1,24 +1,30 @@
-# README
+# API DOCS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## /login 
 
-Things you may want to cover:
+Accepts a JSON object with username and password:
 
-* Ruby version
+```json
+{
+  "username": "my_user",
+  "password": "my_pass"
+}
+```
 
-* System dependencies
+Returns a JSON object with the logged in user information:
 
-* Configuration
+```json
+{ 
+  "username": "my_user",
+  "name": "My Name",
+  "id": 12345
+}
+```
 
-* Database creation
+or an error message if the username or password is incorrect:
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```json
+{ 
+  message: "Invalid username or password"
+}
+```
