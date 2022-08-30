@@ -5,12 +5,15 @@ class UsersController < ApplicationController
     user = User.create(user_params)
 
     if user.valid? 
-      render json: {user: user, status: created}
+      render json: {user: UserSerializer.new(user), status: :created}
     else
-      render json: {error: "Failed to create user", statud: not_created}
+      render json: {error: "Failed to create user", status: :not_created}
     end
   end
 
+  def show
+    render json: {user: UserSerializer.new(@user)}
+  end
 
   private
 

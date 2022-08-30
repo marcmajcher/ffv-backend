@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+
   before_action :authorized
   SECRET = "abcdkjaodfsijasdofiasdogiasdg"
 
@@ -11,13 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def decoded_token
-    # puts "ASDFLKASDPGOIHASDFGOIHASOGIHASDFGOH"
-    # puts auth_header
     if auth_header
       token = auth_header.split(' ')[1]
       begin
-        JWT:decode(token, SECRET, true, algorithm: 'SH256')
-      rescue JWT:DecodeError
+        JWT.decode(token, SECRET)
+      rescue JWT::DecodeError
         nil
       end
     end
