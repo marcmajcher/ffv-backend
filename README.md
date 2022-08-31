@@ -22,7 +22,7 @@ Create a new user:
   "user": {
     "username": "my_user",
     "password": "my_pass",
-    "name": "My Name
+    "name": "My Name"
   }
 }
 ```
@@ -56,6 +56,6 @@ or an error message if the username or password is incorrect:
 
 ```json
 { 
-  message: "Invalid username or password"
+  "message": "Invalid username or password"
 }
 ```
